@@ -1,23 +1,12 @@
 import React, { useState } from "react";
 import "./component.css";
 import  {Search}  from "./Body";
+import FormSearch from "./FormSearch";
 
 const handleAdd = () =>{
   console.log("add")
 }
 
-const FormSearch = ({handleSubmit,handleChange}) => {
-  return (
-    <div style={{ "padding-bottom": "20px", display: "inline-block" }}>
-      <form class="d-flex justify-content-center" style={{ width: "32rem" }} onSubmit = {handleSubmit}>
-        <input class="form-control me-2" type="search" placeholder="Search" onChange = {handleChange} />
-        <button class="btn btn-light btn-outline-success" type="submit">
-          Search
-        </button>
-      </form>
-    </div>
-  );
-};
 
 const AddButton = ({handleAdd}) => {
   return (
@@ -32,27 +21,7 @@ const AddButton = ({handleAdd}) => {
   );
 };
 
-function Navbar() {
-  const [submit, setSubmit] = useState(false);
-  const [input, setInput] = useState({
-      input : ""
-  })
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmit(true)
-    if(input != ""){
-    {Search(input)}
-    }
-    else{
-      alert("Please type something");
-    }
-  }
-  
-  const handleChange = (e) => {
-    setInput(e.target.value)
-  }
-
+function Navbar(props) {
   return (
     <>
       <div
@@ -80,7 +49,7 @@ function Navbar() {
               height: 1,
             }}
           />
-          <FormSearch handleSubmit={handleSubmit} handleChange = {handleChange} />
+          <FormSearch handleSubmit={props.addInput} />
           <AddButton handleAdd={handleAdd}/>
         </div>
       </div>

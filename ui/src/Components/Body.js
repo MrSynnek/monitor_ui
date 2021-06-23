@@ -12,12 +12,84 @@ const handleDel = () =>{
   console.log("del handling...");
 }
 
-export const Search = (input1) =>{
-  console.log(input1)
+const searching = (input,value) => {
+  if(value){
+      // console.log(typeof value)
+      const Search = input.filter((item) => 
+        item.project === value
+      )
+    //  console.log(Search)
+     return(
+      Search.map((item) => (
+        <>
+          <tr style={{ color: "white" }} key={item.id}>
+            <td class="pb-4 pt-4 rounded-start">{item.project}</td>
+            <td class="pb-4 pt-4">{item.service}</td>
+            <td class="pb-4 pt-4">{item.feature}</td>
+            <td class="pb-4 pt-4">{item.target}</td>
+            <td class="pb-4 pt-4">
+              <BootstrapSwitchButton
+                checked={(item.mode) == 0 ? false:true}
+                onstyle="success"
+                offstyle="dark"
+                style="border"
+                onChange={() => {
+                  //toggle on 
+                }}
+              />
+            </td>
+            <td class="pb-4 pt-4 rounded-end">
+        
+              <span onClick={handleEdit}><i class="fas fa-edit" style={{"padding-right":"15px"}}></i></span>
+            
+              
+            <span onClick={handleDel}><i class="far fa-trash-alt"></i></span>
+    
+            </td>
+          </tr>
+          <tr style={{ height: "10px" }}></tr>
+        </>
+      )))
+  }
+  else{
+  return(
+  input.map((item) => (
+    <>
+      <tr style={{ color: "white" }} key={item.id}>
+        <td class="pb-4 pt-4 rounded-start">{item.project}</td>
+        <td class="pb-4 pt-4">{item.service}</td>
+        <td class="pb-4 pt-4">{item.feature}</td>
+        <td class="pb-4 pt-4">{item.target}</td>
+        <td class="pb-4 pt-4">
+          <BootstrapSwitchButton
+            checked={(item.mode) == 0 ? false:true}
+            onstyle="success"
+            offstyle="dark"
+            style="border"
+            onChange={() => {
+              
+            }}
+          />
+        </td>
+        <td class="pb-4 pt-4 rounded-end">
+    
+          <span onClick={handleEdit}><i class="fas fa-edit" style={{"padding-right":"15px"}}></i></span>
+        
+          
+        <span onClick={handleDel}><i class="far fa-trash-alt"></i></span>
+
+        </td>
+      </tr>
+      <tr style={{ height: "10px" }}></tr>
+    </>
+  ))
+  )
+}
 }
 
 
-function Body() {
+
+function Body(props) {
   const [input, setInput] = useState([]);
   useEffect(() => {
     setInput(data);
@@ -54,7 +126,8 @@ function Body() {
             </thead>
             <tr style={{ height: "10px" }}></tr>
             <tbody style={{ backgroundColor: "#393939" }}>
-              {input.map((item) => (
+              {searching(input,props.search)}
+              {/* {input.map((item) => (
                 <>
                   <tr style={{ color: "white" }} key={item.id}>
                     <td class="pb-4 pt-4 rounded-start">{item.project}</td>
@@ -83,7 +156,7 @@ function Body() {
                   </tr>
                   <tr style={{ height: "10px" }}></tr>
                 </>
-              ))}
+              ))} */}
             </tbody>
           </table>
         </div>
