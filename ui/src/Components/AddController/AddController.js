@@ -1,43 +1,68 @@
 import './AddController.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Component } from "react";
+import { Component ,React} from "react";
 import ToggleSwitch from '../CommonComponent/ToggleSwitch/ToggleSwitch';
 import { Button,Dropdown} from 'react-bootstrap';
+import UserWishlist from '../CommonComponent/UserWishlist/UserWishlist'
 
 class NewController extends Component{
-    state = {
-        data : [],
-        mode : true,
-        target: "Choose Target",
-        projectName:"",
-        serviceName:"",
-        featureName:"",
+    constructor(props){
+        super(props)
+        this.state = {
+            data : [],
+            mode : false,
+            target: "Choose Target",
+            projectName:"",
+            serviceName:"",
+            featureName:"",
+        }
+        this.file = null
     }
+
     updateProjectName(event){
         this.setState({projectName : event.target.value});
     }
+
     updateServiceName(event){
         this.setState({serviceName : event.target.value});
     }
+
     updateFeatureName(event){
         this.setState({featureName : event.target.value});
     }
+
     selectTarget(target){
         if(target==="Group"){
             this.setState({target:"Group"})
             
         }else{
             this.setState({target:"Global"})
-           
         } 
     }
+
     saveData(){
-        let text = "projectName : "+this.state.projectName+"\n serviceName : "+this.state.serviceName+"\n featureName : "+this.state.featureName+"\n serviceName : "+this.state.serviceName+"\n Target : "+this.state.target+"\n mode : "+this.state.mode
-        alert(text)
+        if(this.state.projectName===""||this.state.serviceName===""||this.state.featureName===""||this.state.target==="Choose Target"){
+            alert("Please fill up all field in this form.")
+        }else if(this.state.target==="Group"&&this.file===null){
+            alert("Please upload file.")
+        }else{
+            let text = "projectName : "+this.state.projectName+"\n serviceName : "+this.state.serviceName+"\n featureName : "+this.state.featureName+"\n serviceName : "+this.state.serviceName+"\n Target : "+this.state.target+"\n mode : "+!this.state.mode+"\n file : "+this.file
+            alert(text)
+        }     
     }
 
-    render() {
+    handleUserWishlist = (file) =>{
+        this.setState({file: file})
+        this.file = file
+    }
+
+    handleCallback = (childData) =>{
+        this.setState({mode: childData.mode})
+        console.log(childData)
+    }
+
     
+    render(){
     return (
         <div className="container-fluid maincontainer">
              <div className="newheader row ">
@@ -78,15 +103,9 @@ class NewController extends Component{
                             </div>
                             <div className="targetgroup row">
                                 <p>Mode</p>
-                                <label className="toggle-switch">
-                                    <input type="checkbox" checked={this.state.mode} onChange={() => this.setState({ mode: !this.state.mode})}/>
-                                    <span className="switch" />
-                                </label>
+                                <ToggleSwitch parentCallback = {this.handleCallback} initMode={this.state.mode} />
                             </div>
-                            <div className="upload col-12 form-group" id="upload">
-                                <label for="exampleFormControlFile1">User Wishlist</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
-                            </div>
+                            <UserWishlist parentCallback={this.handleUserWishlist} initFile={this.state.mode==="Group"? this.state.file : null} initMode={this.state.target}/>    
                         </div>
                     </div>
                </div>
@@ -95,11 +114,10 @@ class NewController extends Component{
                 <Button variant="primary" onClick={() => this.props.history.push(`/dashboard`)} className="graybutton" >Cancle</Button>
                 <Button variant="primary" onClick={() => this.saveData()} className="purplebutton"> 
                     <i className="tiny material-icons">save</i> Save
-                    </Button>
+                </Button>
             </div>
         </div>
     );
     }
-
 }
 export default(NewController);

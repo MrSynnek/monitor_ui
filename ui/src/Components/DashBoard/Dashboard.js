@@ -7,18 +7,21 @@ import ToggleSwitch from '../CommonComponent/ToggleSwitch/ToggleSwitch';
 class Dashboard extends Component{
     
     state={
-        data:[]
+        data:[],
+        index:null
     }
 
     componentDidMount(){
         this.setState({data:jsonData })
     }
-    
-    editMode(index){
+
+    handleCallback = (childData) =>{
         let tempData = this.state.data
-        tempData[index].mode = !tempData[index].mode
+        tempData[childData.id].mode = !childData.mode
         this.setState({data:tempData })
+        console.log( tempData[childData.id].mode)
     }
+
     render() {
     return (
         <div className="container-fluid maincontainer">
@@ -49,22 +52,19 @@ class Dashboard extends Component{
                     </div>
                     
                     {this.state.data.map((item, index) => {
-              return (
-                <div className="controlcard row ">
-                        <div className="col-2 text-break cardtext" >{item.project}</div>
-                        <div className="col-2 text-break cardtext" >{item.service}</div>
-                        <div className="col-4 text-break cardtext" >{item.feature}</div>
-                        <div className="col-1 cardtext" > <i className="tiny material-icons">{item.target==="Global"? "language" : "group"}</i> </div>
-                        <div className="col-2 cardtext" >
-                            <label className="toggle-switch">
-                                <input type="checkbox" checked={item.mode} onChange={() => this.editMode(index)}/>
-                                <span className="switch" />
-                            </label>
-                        </div>
-                        <div className="col-1 cardtext" ><i className="tiny material-icons editicon">edit</i> <i className="tiny material-icons deleteicon">delete</i></div>  
-                    </div>
-              );
-            })}
+                        return (
+                            <div className="controlcard row "  key={index}>
+                                <div className="col-2 text-break cardtext" >{item.project}</div>
+                                <div className="col-2 text-break cardtext" >{item.service}</div>
+                                <div className="col-4 text-break cardtext" >{item.feature}</div>
+                                <div className="col-1 cardtext" > <i className="tiny material-icons">{item.target==="Global"? "language" : "group"}</i> </div>
+                                <div className="col-2 cardtext" >
+                                    <ToggleSwitch parentCallback = {this.handleCallback} initMode={item.mode} id={index} onClick={()=>this.editMode(index)}/>    
+                                </div>
+                                <div className="col-1 cardtext" ><i className="tiny material-icons editicon">edit</i> <i className="tiny material-icons deleteicon">delete</i></div>  
+                            </div>
+                        );
+                    })}
                 </div>
              </div>
         </div>

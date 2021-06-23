@@ -93,27 +93,7 @@ h1{
     justify-content: center !important;
 }
 
-.chosedroupdown{
-    margin-left: 20px;
-    background-color: #6722CB;
-    border: transparent;
-    height: 45px !important;
-    width: 150px !important;
-}
-.chosedroupdown:hover{
-    margin-left: 20px;
-    background-color: #541ca8;
-    border: transparent;
-    height: 45px !important;
-    width: 150px;
-}
-.chosedroupdown:focus-within{
-    margin-left: 20px;
-    background-color: #6722CB;
-    border: transparent;
-    height: 45px !important;
-    width: 150px;
-}
+
 .togglebutton{
     background-color: #62DAB8;
     margin-left: 30px;
@@ -158,4 +138,25 @@ h1{
     justify-content: center !important;
     padding-top: 30px;
     padding-bottom: 30px;
+}
+.chosedroupdown{
+    margin-left: 20px;
+    background-color: #6722CB;
+    border: transparent;
+    height: 45px !important;
+    width: 150px !important;
+}
+.chosedroupdown:hover{
+    margin-left: 20px;
+    background-color: #541ca8;
+    border: transparent;
+    height: 45px !important;
+    width: 150px;
+}
+.chosedroupdown:focus-within{
+    margin-left: 20px;
+    background-color: #6722CB;
+    border: transparent;
+    height: 45px !important;
+    width: 150px;
 }
