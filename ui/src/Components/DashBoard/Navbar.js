@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import "./component.css";
-import  {Search}  from "./Body";
 import FormSearch from "./FormSearch";
-
-const handleAdd = () =>{
-  console.log("add")
-}
+import { useHistory } from "react-router-dom";
 
 
-const AddButton = ({handleAdd}) => {
+
+const AddButton = (props) => {
+  const history = useHistory();
+
+  function handleClick() {
+    history.push("/add");
+  }
   return (
     <div
       class="float-end"
       style={{ "padding-bottom": "20px", display: "inline-block" }}
     >
-      <button onClick={handleAdd} class="btn btn-light btn-outline-success " type="submit">
+      <button class="btn btn-light btn-outline-success " type="submit" onClick={handleClick}>
         Add
       </button>
     </div>
@@ -50,7 +52,7 @@ function Navbar(props) {
             }}
           />
           <FormSearch handleSubmit={props.addInput} />
-          <AddButton handleAdd={handleAdd}/>
+          <AddButton />
         </div>
       </div>
     </>

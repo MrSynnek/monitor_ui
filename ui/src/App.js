@@ -1,16 +1,19 @@
 import './App.css';
-import Navbar from'./Components/Navbar'
-import Body from './Components/Body';
-import { useState } from 'react';
+import Dashboard from './Components/DashBoard/Dashboard';
+import AddController from './Components/AddController/AddController'
+import EditController from'./Components/Edit/Edit'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 function App() {
-  const [inputbar,setInputbar] = useState([])
-  const addInput = (e) =>{
-    setInputbar(e);
-  }
 return(
   <>
-  <Navbar addInput = {addInput}/>
-  <Body search = {inputbar}/>
+  <Router>
+        <Switch>
+          <Route path='/' exact component={Dashboard} />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/add' component={AddController} />
+          <Route path='/edit' component={EditController}/>
+        </Switch>
+      </Router>
   </>
 );
 }
