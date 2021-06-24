@@ -2,8 +2,7 @@ import {Modal,Button} from 'react-bootstrap'
 import './Modal.css'
 
 function VerticallyCenteredModal(props) {
-   // console.log("i'm show dog " + props.message + props.head);
-    return (
+        return (
       <Modal
         {...props}
         size="md"

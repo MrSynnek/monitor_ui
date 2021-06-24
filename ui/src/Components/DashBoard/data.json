@@ -1,0 +1,83 @@
+[
+    {
+        "id": 0,
+        "project" : "FastEasy",
+        "service" : "PointX",
+        "feature" : "feature.toggle.transfer.loadprofile",
+        "target" : "Group",
+        "mode" : false
+    },
+    {
+        "id": 1,
+        "project" : "FastEasy",
+        "service" : "Payment",
+        "feature" : "feature.toggle.payment.bill",
+        "target" : "Global",
+        "mode" : true
+    },
+    {
+        "id": 2,
+        "project" : "FastEasy",
+        "service" : "Profile",
+        "feature" : "feature.toggle.transfer.loadprofile.profile.example",
+        "target" : "Global",
+        "mode" : true
+    },
+    {
+        "id": 3,
+        "project" : "PointX",
+        "service" : "Transfer",
+        "feature" : "feature.toggle.transfer.loadprofile",
+        "target" : "Group",
+        "mode" : false
+    },
+    {
+        "id": 4,
+        "project" : "PointX",
+        "service" : "Payment",
+        "feature" : "feature.toggle.payment.bill",
+        "target" : "Group",
+        "mode" : true
+    },
+    {
+        "id": 5,
+        "project" : "PointX",
+        "service" : "Profile",
+        "feature" : "feature.toggle.loadprofile.loadprofile",
+        "target" : "Group",
+        "mode" : false
+    },
+    {
+        "id": 6,
+        "project" : "RePlatform",
+        "service" : "Transfer",
+        "feature" : "feature.toggle.transfer.loadprofile",
+        "target" : "Global",
+        "mode" : true
+    },
+    {
+        "id": 7,
+        "project" : "RePlatform",
+        "service" : "Transfer",
+        "feature" : "feature.toggle.transfer.loadprofile",
+        "target" : "Global",
+        "mode" : true
+    },
+    {
+        "id": 8,
+        "project" : "RePlatform",
+        "service" : "Transfer",
+        "feature" : "feature.toggle.transfer.loadprofile",
+        "target" : "Group",
+        "mode" : false
+    },
+    {
+        "id": 9,
+        "project" : "RePlatform",
+        "service" : "Transfer",
+        "feature" : "feature.toggle.transfer.loadprofile",
+        "target" : "Global",
+        "mode" : false
+    }
+    
+]
