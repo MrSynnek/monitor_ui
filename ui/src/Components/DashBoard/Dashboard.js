@@ -64,7 +64,7 @@ class Dashboard extends Component{
                                 <div className="col-4 text-break cardtext" >{item.feature}</div>
                                 <div className="col-1 cardtext" > <i className="tiny material-icons">{item.target==="Global"? "language" : "group"}</i> </div>
                                 <div className="col-2 cardtext" >
-                                    <ToggleSwitch parentCallback = {this.handleCallback} initMode={item.mode} id={index} onClick={()=>this.editMode(index)}/>    
+                                    <ToggleSwitch parentCallback = {this.handleCallback} initMode={item.mode} id={index} />    
                                 </div>
                                 <div className="col-1 cardtext" ><i className="tiny material-icons editicon" onClick={() => this.props.history.push(`/add?id=${item.id}`)}>edit</i> <i className="tiny material-icons deleteicon" onClick={() => this.toggleModal()}>delete</i></div>  
                             </div>
