@@ -1,5 +1,4 @@
 import './Edit.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Component ,React} from "react";
 import ToggleSwitch from '../CommonComponent/ToggleSwitch/ToggleSwitch';
 import { Button,Dropdown} from 'react-bootstrap';

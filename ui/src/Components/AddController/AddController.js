@@ -1,5 +1,4 @@
 import './AddController.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Component ,React} from "react";
 import ToggleSwitch from '../CommonComponent/ToggleSwitch/ToggleSwitch';
 import { Button,Dropdown} from 'react-bootstrap';
@@ -49,7 +48,9 @@ class NewController extends Component{
             let text = "projectName : "+this.state.projectName+"\n serviceName : "+this.state.serviceName+"\n featureName : "+this.state.featureName+"\n serviceName : "+this.state.serviceName+"\n Target : "+this.state.target+"\n mode : "+!this.state.mode+"\n file : "+this.file
             alert(text)
 
-            //axios
+            //axios  
+            this.props.history.push("/dashboard");
+
         }     
     }
 

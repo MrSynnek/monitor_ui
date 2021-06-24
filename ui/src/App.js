@@ -1,15 +1,13 @@
-import React from 'react'
+import './App.css';
 import Dashboard from './Components/DashBoard/Dashboard';
-import AddController from './Components/AddController/AddController';
-import EditController from './Components/Edit/Edit';
-import './App.css'
+import AddController from './Components/AddController/AddController'
+import EditController from'./Components/Edit/Edit'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
-
-  return (
-    <>
-      <Router>
+return(
+  <>
+  <Router>
         <Switch>
           <Route path='/' exact component={Dashboard} />
           <Route path='/dashboard' component={Dashboard} />
@@ -17,7 +15,8 @@ function App() {
           <Route path='/edit' component={EditController}/>
         </Switch>
       </Router>
-    </>
-  )}
+  </>
+);
+}
 
 export default App;
