@@ -1,4 +1,4 @@
-import './AddController.css'
+import "./AddController.css";
 import { Component ,React} from "react";
 import ToggleSwitch from '../CommonComponent/ToggleSwitch/ToggleSwitch';
 import { Button,Dropdown} from 'react-bootstrap';
@@ -90,9 +90,9 @@ class NewController extends Component{
                         </div>
                         <div className="inputgroup row col-11">
                             <div className="targetgroup row">
-                                <p>Target</p>
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="success" id="dropdown-basic" className="chosedroupdown">
+                                <p className="text-2 col-2">Target</p>
+                                <Dropdown className="col-2 drop">
+                                    <Dropdown.Toggle variant="Secondary" id="dropdown-basic" className=" chosedroupdown">
                                        {this.state.target}
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu >
@@ -100,9 +100,7 @@ class NewController extends Component{
                                         <Dropdown.Item href="" onSelect={()=> this.selectTarget("Global")}>Global</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
-                            </div>
-                            <div className="targetgroup row">
-                                <p>Mode</p>
+                                <p className="text-2 col-2">Mode</p>
                                 <ToggleSwitch parentCallback = {this.handleToggleMode} initMode={this.state.mode} />
                             </div>
                             <UserWishlist parentCallback={this.handleUserWishlist} initFile={this.state.mode==="Group"? this.state.file : null} initMode={this.state.target}/>    

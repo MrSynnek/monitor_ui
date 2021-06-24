@@ -7,10 +7,10 @@ function Dashboard() {
     setInputbar(e);
   }
 return(
-  <>
-  <Navbar addInput = {addInput}/>
-  <Body search = {inputbar}/>
-  </>
+  <div className="container-fluid maincontainer">
+    <Navbar addInput = {addInput}/>
+    <Body search = {inputbar}/>
+  </div>
 )
 }
 export default Dashboard;

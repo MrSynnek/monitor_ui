@@ -1,4 +1,3 @@
-import './App.css';
 import Dashboard from './Components/DashBoard/Dashboard';
 import AddController from './Components/AddController/AddController'
 import EditController from'./Components/Edit/Edit'

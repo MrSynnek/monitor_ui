@@ -49,7 +49,7 @@ class UserWishlist extends Component {
   render(){
     if(this.props.initMode==="Group"){
       return (
-        <Form.File id="formcheck" className="container row col-12">
+        <Form.File id="formcheck" className="row box">
           <Form.File.Label>User Wishlist</Form.File.Label>
           <Form.File.Input onChange={this.onChangeHandler} />
         </Form.File>

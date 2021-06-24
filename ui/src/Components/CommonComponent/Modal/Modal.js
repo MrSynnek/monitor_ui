@@ -8,10 +8,9 @@ function VerticallyCenteredModal(props) {
         size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">{props.head}</Modal.Title>
+        <Modal.Header className="modalHeader">
+          <Modal.Title id="contained-modal-title-vcenter"><p>{props.head}</p></Modal.Title>
         </Modal.Header>
         <Modal.Body className="modalBody">
           <p>{props.message}</p>
