@@ -1,5 +1,6 @@
 import './Dashboard.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import VerticallyCenteredModal from '../CommonComponent/Modal/Modal'
 import { Button} from 'react-bootstrap';
 import jsonData from './data.json'
 import { Component } from "react";
@@ -8,7 +9,12 @@ class Dashboard extends Component{
     
     state={
         data:[],
-        index:null
+        index:null,
+        modal:false
+    }
+    
+    toggleModal(){
+        this.setState({modal:!this.state.modal})
     }
 
     componentDidMount(){
@@ -19,7 +25,6 @@ class Dashboard extends Component{
         let tempData = this.state.data
         tempData[childData.id].mode = !childData.mode
         this.setState({data:tempData })
-        console.log( tempData[childData.id].mode)
     }
 
     render() {
@@ -61,12 +66,18 @@ class Dashboard extends Component{
                                 <div className="col-2 cardtext" >
                                     <ToggleSwitch parentCallback = {this.handleCallback} initMode={item.mode} id={index} onClick={()=>this.editMode(index)}/>    
                                 </div>
-                                <div className="col-1 cardtext" ><i className="tiny material-icons editicon">edit</i> <i className="tiny material-icons deleteicon">delete</i></div>  
+                                <div className="col-1 cardtext" ><i className="tiny material-icons editicon" onClick={() => this.props.history.push(`/add?id=${item.id}`)}>edit</i> <i className="tiny material-icons deleteicon" onClick={() => this.toggleModal()}>delete</i></div>  
                             </div>
                         );
                     })}
                 </div>
              </div>
+             <VerticallyCenteredModal 
+                show={this.state.modal}
+                onHide={() => this.toggleModal()}
+                message="Do you want to delete this control?"
+                head="Delete this control"
+            />
         </div>
     );
     }

@@ -48,20 +48,19 @@ class NewController extends Component{
         }else{
             let text = "projectName : "+this.state.projectName+"\n serviceName : "+this.state.serviceName+"\n featureName : "+this.state.featureName+"\n serviceName : "+this.state.serviceName+"\n Target : "+this.state.target+"\n mode : "+!this.state.mode+"\n file : "+this.file
             alert(text)
+
+            //axios
         }     
     }
 
     handleUserWishlist = (file) =>{
-        this.setState({file: file})
         this.file = file
     }
 
-    handleCallback = (childData) =>{
-        this.setState({mode: childData.mode})
-        console.log(childData)
+    handleToggleMode = (data) =>{
+        this.setState({mode: data.mode})
     }
 
-    
     render(){
     return (
         <div className="container-fluid maincontainer">
@@ -103,7 +102,7 @@ class NewController extends Component{
                             </div>
                             <div className="targetgroup row">
                                 <p>Mode</p>
-                                <ToggleSwitch parentCallback = {this.handleCallback} initMode={this.state.mode} />
+                                <ToggleSwitch parentCallback = {this.handleToggleMode} initMode={this.state.mode} />
                             </div>
                             <UserWishlist parentCallback={this.handleUserWishlist} initFile={this.state.mode==="Group"? this.state.file : null} initMode={this.state.target}/>    
                         </div>

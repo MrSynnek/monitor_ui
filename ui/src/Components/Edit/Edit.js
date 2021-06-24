@@ -19,6 +19,15 @@ class EditController extends Component{
         this.file = null
     }
 
+    componentDidMount(){
+        const queryParams = new URLSearchParams(window.location.search);
+        const id = queryParams.get('id');
+        console.log(id);
+
+        //axios
+
+    }
+
     updateProjectName(event){
         this.setState({projectName : event.target.value});
     }
@@ -48,6 +57,9 @@ class EditController extends Component{
         }else{
             let text = "projectName : "+this.state.projectName+"\n serviceName : "+this.state.serviceName+"\n featureName : "+this.state.featureName+"\n serviceName : "+this.state.serviceName+"\n Target : "+this.state.target+"\n mode : "+!this.state.mode+"\n file : "+this.file
             alert(text)
+            
+            //axios
+            this.props.history.push(`/dashboard`)
         }     
     }
 

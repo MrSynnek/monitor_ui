@@ -1,7 +1,6 @@
 
 import { React,Component} from "react";
 import { Form} from 'react-bootstrap';
-import { ToastContainer, toast } from 'react-toastify';
 import  "../UserWishlist/UserWishlist.css";
 class UserWishlist extends Component {
  
@@ -14,12 +13,9 @@ class UserWishlist extends Component {
 
   onChangeHandler = (event) =>{
     var file = event.target.files[0];
-    //console.log(file);
     console.log(this.validateSize(event));
     if(this.validateSize(event)){ 
-      //console.log(file);
       this.setState({selectedFile:file})
-      //console.log(this.state.selectedFile);
       this.props.parentCallback(file);
     }
     
@@ -45,7 +41,7 @@ class UserWishlist extends Component {
     //console.log(file.size);
       if (file.size > size) {
       err = file.type+'is too large, please pick a smaller file\n';
-      toast.error(err);
+      alert(err)
     }
     return true
   };

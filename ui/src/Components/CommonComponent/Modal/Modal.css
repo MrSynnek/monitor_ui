@@ -1,0 +1,28 @@
+.modalBody{
+    text-align: center;
+}
+
+.modalFooter{
+    justify-content: center !important;
+}
+
+.cancleButton{
+    background-color: #797979;;
+}
+.cancleButton:hover{
+    background-color: #666666;
+}
+.cancleButton:focus{
+    background-color: #666666;
+}
+
+.deleteButton{
+    background-color: #be1d1d;
+    background-color: transparent;
+}
+.deleteButton:hover{
+    background-color: #921919;
+}
+.deleteButton:focus{
+    background-color: #921919;
+}
