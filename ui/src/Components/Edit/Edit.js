@@ -71,7 +71,6 @@ class EditController extends Component{
         this.setState({mode: childData.mode})
         console.log(childData)
     }
-
     
     render(){
     return (
