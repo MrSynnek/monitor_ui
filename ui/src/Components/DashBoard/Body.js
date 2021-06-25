@@ -9,6 +9,7 @@ function Body(props) {
   useEffect(() => {
     setInput(data);
   });
+  
   return (
     <>
         <div class="row bodyTable">
