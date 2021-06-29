@@ -3,13 +3,12 @@ import data from "./data"
 import IsSearch from "./ValidateSearch";
 import "./Dashboard.css";
 
-
 function Body(props) {
   const [input, setInput] = useState([]);
   useEffect(() => {
     setInput(data);
   });
-  
+
   return (
     <>
         <div class="row bodyTable">
