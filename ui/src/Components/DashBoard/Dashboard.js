@@ -6,11 +6,11 @@ function Dashboard() {
   const addInput = (e) =>{
     setInputbar(e);
   }
-return(
-  <>
-  <Navbar addInput = {addInput}/>
-  <Body search = {inputbar}/>
-  </>
-)
+  return(
+    <div className="container-fluid maincontainer">
+      <Navbar addInput = {addInput}/>
+      <Body search = {inputbar}/>
+    </div>
+  )
 }
 export default Dashboard;

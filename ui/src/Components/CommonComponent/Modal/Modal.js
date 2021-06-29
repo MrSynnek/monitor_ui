@@ -2,17 +2,15 @@ import {Modal,Button} from 'react-bootstrap'
 import './Modal.css'
 
 function VerticallyCenteredModal(props) {
-   // console.log("i'm show dog " + props.message + props.head);
-    return (
+        return (
       <Modal
         {...props}
         size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">{props.head}</Modal.Title>
+        <Modal.Header className="modalHeader">
+          <Modal.Title id="contained-modal-title-vcenter"><p>{props.head}</p></Modal.Title>
         </Modal.Header>
         <Modal.Body className="modalBody">
           <p>{props.message}</p>

@@ -12,7 +12,7 @@
         "project" : "FastEasy",
         "service" : "Payment",
         "feature" : "feature.toggle.payment.bill",
-        "target" : "Global",
+        "target" : "Group",
         "mode" : 1
     },
     {
@@ -20,7 +20,7 @@
         "project" : "FastEasy",
         "service" : "Profile",
         "feature" : "feature.toggle.transfer.loadprofile.profile.example",
-        "target" : "Global",
+        "target" : "Group",
         "mode" : 1
     },
     {
@@ -36,7 +36,7 @@
         "project" : "PointX",
         "service" : "Payment",
         "feature" : "feature.toggle.payment.bill",
-        "target" : "Global",
+        "target" : "Group",
         "mode" : 0
     },
     {
@@ -68,7 +68,7 @@
         "project" : "RePlatform",
         "service" : "Transfer",
         "feature" : "feature.toggle.transfer.loadprofile",
-        "target" : "Global",
+        "target" : "Group",
         "mode" : 0
     },
     {
@@ -76,7 +76,7 @@
         "project" : "RePlatform",
         "service" : "Transfer",
         "feature" : "feature.toggle.transfer.loadprofile",
-        "target" : "Global",
+        "target" :  "Global",
         "mode" : 0
     }
     ]

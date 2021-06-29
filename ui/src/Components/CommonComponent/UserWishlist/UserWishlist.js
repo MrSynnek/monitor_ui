@@ -2,7 +2,7 @@
 import { React,Component} from "react";
 import { Form} from 'react-bootstrap';
 import  "../UserWishlist/UserWishlist.css";
-class UserWishlist extends Component {
+class UserWhitelist extends Component {
  
   constructor(props){
     super(props)
@@ -49,20 +49,20 @@ class UserWishlist extends Component {
   render(){
     if(this.props.initMode==="Group"){
       return (
-        <Form.File id="formcheck" className="container row col-12">
-          <Form.File.Label>User Wishlist</Form.File.Label>
+        <Form.File id="formcheck" className="row box">
+          <Form.File.Label>User Whitelist</Form.File.Label>
           <Form.File.Input onChange={this.onChangeHandler} />
         </Form.File>
       );
     }
     else{
       return (
-        <>
-        </>
+        <div className="vacant">
+        </div>
       );
     }
     
   }
 }
 
-export default(UserWishlist);
+export default(UserWhitelist);

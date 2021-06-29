@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./component.css";
+import "./Dashboard.css";
+import { Button } from "react-bootstrap";
 const FormSearch = ({handleSubmit}) => {
     const [input, setInput] = useState(
       {
@@ -15,14 +16,12 @@ const FormSearch = ({handleSubmit}) => {
     }
 
   return (
-    <div style={{ "padding-bottom": "20px", display: "inline-block" }}>
-      <form class="d-flex justify-content-center" style={{ width: "32rem" }} onSubmit = {handleSubmit1}>
-        <input class="form-control me-2" type="text" placeholder="Search" id="test" onChange = {handleChange} />
-        <button class="btn btn-light btn-outline-success" type="submit">
-          Search
-        </button>
-      </form>
-    </div>
+    <>
+      <input className="form-control whiteform" type="search" placeholder="Search" id="test" onChange = {handleChange} />
+      <Button variant="default" className="searchbutton" type="submit" onClick = {handleSubmit1}>
+        <i className="tiny material-icons">search</i>  Search
+      </Button>
+    </>
   );
 };
 
