@@ -70,6 +70,8 @@ class EditController extends Component{
     
     handleFlutterToggle = (data) =>{
         this.setState({isFlutter: !data.mode})
+        if(this.state.isFlutter===true) document.getElementById("modeDiv").style.visibility = "hidden" ;
+        else document.getElementById("modeDiv").style.visibility = "visible";
     }
     render(){
     return (
@@ -100,7 +102,7 @@ class EditController extends Component{
                                     <ToggleSwitch parentCallback = {this.handleFlutterToggle} initMode={this.state.isFlutter} />
                                     <p className="textstatus col-2">{this.state.isFlutter===true? "YES":"NO"}</p>
                                 </div>
-                                <div className="col-6 row togglediv">
+                                <div className="col-6 row togglediv"  id="modeDiv">
                                     <p className="col-2 text-2">Mode</p>
                                     <ToggleSwitch parentCallback = {this.handleToggleMode} initMode={this.state.mode} />
                                     <p className="textstatus col-2">{this.state.mode===true? "ON":"OFF"}</p>

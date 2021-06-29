@@ -173,5 +173,10 @@ h1{
     margin-bottom: 30px;
 }
 .vacant{
-    height:20px
+    height:20px;
+    
+}
+
+#modeDiv{
+    visibility: hidden;
 }
