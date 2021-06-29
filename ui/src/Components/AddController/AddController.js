@@ -2,7 +2,7 @@ import "./AddController.css";
 import { Component ,React} from "react";
 import ToggleSwitch from '../CommonComponent/ToggleSwitch/ToggleSwitch';
 import { Button,Dropdown} from 'react-bootstrap';
-import UserWishlist from '../CommonComponent/UserWishlist/UserWishlist'
+import UserWhitelist from '../CommonComponent/UserWishlist/UserWishlist'
 
 class NewController extends Component{
     constructor(props){
@@ -10,10 +10,10 @@ class NewController extends Component{
         this.state = {
             data : [],
             mode : false,
+            isFlutter : false,
             target: "Choose Target",
             projectName:"",
             serviceName:"",
-            featureName:"",
         }
         this.file = null
     }
@@ -26,10 +26,6 @@ class NewController extends Component{
         this.setState({serviceName : event.target.value});
     }
 
-    updateFeatureName(event){
-        this.setState({featureName : event.target.value});
-    }
-
     selectTarget(target){
         if(target==="Group"){
             this.setState({target:"Group"})
@@ -40,26 +36,31 @@ class NewController extends Component{
     }
 
     saveData(){
-        if(this.state.projectName===""||this.state.serviceName===""||this.state.featureName===""||this.state.target==="Choose Target"){
+        if(this.state.projectName===""||this.state.serviceName===""||this.state.target==="Choose Target"){
             alert("Please fill up all field in this form.")
         }else if(this.state.target==="Group"&&this.file===null){
             alert("Please upload file.")
         }else{
-            let text = "projectName : "+this.state.projectName+"\n serviceName : "+this.state.serviceName+"\n featureName : "+this.state.featureName+"\n serviceName : "+this.state.serviceName+"\n Target : "+this.state.target+"\n mode : "+!this.state.mode+"\n file : "+this.file
+            let text = "projectName : "+this.state.projectName+"\n serviceName : "+this.state.serviceName+"\n serviceName : "+this.state.serviceName+"\n Target : "+this.state.target+"\n mode : "+this.state.mode+"\n isFlutter : "+this.state.isFlutter+"\n file : "+this.file
             alert(text)
 
             //axios  
             this.props.history.push("/dashboard");
-
         }     
     }
 
-    handleUserWishlist = (file) =>{
+    handleUserWhitelist = (file) =>{
         this.file = file
     }
 
     handleToggleMode = (data) =>{
-        this.setState({mode: data.mode})
+        console.log( data.mode)
+        this.setState({mode: !data.mode})
+        console.log( this.state.mode)
+    }
+
+    handleFlutterToggle = (data) =>{
+        this.setState({isFlutter: !data.mode})
     }
 
     render(){
@@ -77,20 +78,27 @@ class NewController extends Component{
                     </div>
                     <div className="formbody col-12 row" >
                         <div className="inputgroup row col-11">
-                            <p className="text col-12">Project Name</p>
-                            <input placeholder="Project Name" onChange={evt=>this.updateProjectName(evt)} className="form-control input col-12" />
-                        </div>
-                        <div className="inputgroup row col-11">
-                            <p className="text col-12">Service Name</p>
-                            <input placeholder="Service Name" onChange={evt=>this.updateServiceName(evt)} className="form-control input col-12" />
-                        </div>
-                        <div className="inputgroup row col-11">
                             <p className="text col-12">Feature Name</p>
-                            <input placeholder="Feature Name" onChange={evt=>this.updateFeatureName(evt)} className="form-control input col-12" />
+                            <input placeholder="Feature Name" onChange={evt=>this.updateProjectName(evt)} className="form-control input col-12" />
+                        </div>
+                        <div className="inputgroup row col-11">
+                            <p className="text col-12">Function Name</p>
+                            <input placeholder="Function Name" onChange={evt=>this.updateServiceName(evt)} className="form-control input col-12" />
                         </div>
                         <div className="inputgroup row col-11">
                             <div className="targetgroup row">
-                                <p className="text-2 col-2">Target</p>
+                                <div className="col-6 row togglediv">
+                                    <p className="col-2 text-2">isFlutter</p>
+                                    <ToggleSwitch parentCallback = {this.handleFlutterToggle} initMode={this.state.isFlutter} />
+                                    <p className="textstatus col-2">{this.state.isFlutter===true? "YES":"NO"}</p>
+                                </div>
+                                <div className="col-6 row togglediv">
+                                    <p className="col-2 text-2">Mode</p>
+                                    <ToggleSwitch parentCallback = {this.handleToggleMode} initMode={this.state.mode} />
+                                    <p className="textstatus col-2">{this.state.mode===true? "ON":"OFF"}</p>
+                                </div>
+                                <div className="col-6 row">
+                                <p className="col-2 text-2">Target</p>
                                 <Dropdown className="col-2 drop">
                                     <Dropdown.Toggle variant="Secondary" id="dropdown-basic" className=" chosedroupdown">
                                        {this.state.target}
@@ -100,10 +108,9 @@ class NewController extends Component{
                                         <Dropdown.Item href="" onSelect={()=> this.selectTarget("Global")}>Global</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
-                                <p className="text-2 col-2">Mode</p>
-                                <ToggleSwitch parentCallback = {this.handleToggleMode} initMode={this.state.mode} />
+                                </div>
                             </div>
-                            <UserWishlist parentCallback={this.handleUserWishlist} initFile={this.state.mode==="Group"? this.state.file : null} initMode={this.state.target}/>    
+                            <UserWhitelist parentCallback={this.handleUserWhitelist} initFile={this.state.mode==="Group"? this.state.file : null} initMode={this.state.target}/>    
                         </div>
                     </div>
                </div>

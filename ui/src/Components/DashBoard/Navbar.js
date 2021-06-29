@@ -4,11 +4,9 @@ import FormSearch from "./FormSearch";
 import { useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-
-
 const AddButton = (props) => {
-  const history = useHistory();
 
+  const history = useHistory();
   function handleClick() {
     history.push("/add");
   }
@@ -18,6 +16,8 @@ const AddButton = (props) => {
     </Button>
   );
 };
+
+
 
 function Navbar(props) {
   return (
