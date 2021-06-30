@@ -43,8 +43,8 @@ class NewController extends Component{
         }else{
             let text = "projectName : "+this.state.projectName+"\n serviceName : "+this.state.serviceName+"\n serviceName : "+this.state.serviceName+"\n Target : "+this.state.target+"\n mode : "+this.state.mode+"\n isFlutter : "+this.state.isFlutter+"\n file : "+this.file
             alert(text)
-
-            //axios  
+            //axios 
+            
             this.props.history.push("/dashboard");
         }     
     }

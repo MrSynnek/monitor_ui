@@ -1,16 +1,21 @@
 import axios from 'axios'
 
-export function callRandomUser(){
-    let newController = {
-        "feature": "replatform",
-        "function": "transfer",
-        "flag": "1",
-        "is_flutter": "1"  
+export function getDashboardData(){
+    let object={
+        "deviceId":"mfmf",
+        "userMode": "INDIVIDUAL",
+        "configVersion":"8"
     }
-    return fetch("https://randomuser.me/api/").then(resp => resp.json());
+    var data
+    axios.post('v1/toggle/flags',object,{
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then((response) => {
+        console.log(response)
+        data=response.data
+        }
+    )
+    console.log(data)
+    return data
 }
-
-export function callRandomCat(){
-    return axios.get('https://aws.random.cat/meow')
-}
-
