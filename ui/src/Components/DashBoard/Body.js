@@ -1,9 +1,33 @@
 import React, { useEffect, useState } from "react";
 import IsSearch from "./ValidateSearch";
-import "./Dashboard.css";
+// const{ express }= require('express');
+
+// const port = 11072;
+
+
 
 function Body(props) {
+// const path = require('path');
+// const app = express();
+// const bodyParser = require("body-parser");
+// const express = require('express')
+// const app = express()
+
+// app.get('/', (req, res) => {
+//   res.send('Hello World')
+// })
+
+  // var express = require('express');
+  // const app = express();
   const [input, setInput] = useState([]);
+  // console.log("123");
+  // app.use(bodyParser.json());
+  // app.get('/api2/users', (req, res) => {
+  //   console.log('api/users called!')
+  //   res.json(null);
+  // });
+  // console.log("123");
+
   async function fetching(){
     const requestOption = {
       // mode: 'no-cors',
@@ -17,8 +41,20 @@ function Body(props) {
         configVersion: "8"
     })
     };
+
+    
+    const requestOption2 = {
+      // mode: 'no-cors',
+      method: 'get'
+    };
     try{
-    const response = await fetch('http://localhost:11114/v1/toggle/flags',requestOption)
+    const response = await fetch('/v1/remittance/cache/refresh/countrychannel',requestOption).then(response => response.json())
+    console.log("response");
+    console.log(response);
+
+    const response2 = await fetch('/api/greeting',requestOption2).then(response => response)
+    console.log("response2");
+    console.log(response2);
     const data = await response.json();
     setInput(data)
     }
